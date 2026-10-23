@@ -1,0 +1,7 @@
+node_modules
+dist
+dev-dist
+.tools
+*.log
+.DS_Store
+envoi-github
