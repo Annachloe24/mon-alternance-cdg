@@ -8,6 +8,8 @@ import { EntryForm } from './pages/EntryForm';
 import { Help } from './pages/Help';
 import { History } from './pages/History';
 import { More } from './pages/More';
+import { Period } from './pages/Period';
+import { Planning } from './pages/Planning';
 import { Salary } from './pages/Salary';
 import { Settings } from './pages/Settings';
 import { Weeks } from './pages/Weeks';
@@ -22,6 +24,10 @@ function Screen({ route }: { route: string }) {
   switch (path) {
     case '/saisie':
       return <EntryForm key={`new-${query}`} initialDate={new URLSearchParams(query).get('date') ?? undefined} />;
+    case '/periode':
+      return <Period />;
+    case '/planning':
+      return <Planning />;
     case '/historique':
       return <History />;
     case '/semaines':

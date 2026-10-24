@@ -3,13 +3,13 @@ import { ClockIcon, HomeIcon, ListIcon, MoreIcon, PlusIcon } from './icons';
 const TABS = [
   { path: '/', label: 'Accueil', icon: HomeIcon, match: (r: string) => r === '/' },
   { path: '/historique', label: 'Historique', icon: ListIcon, match: (r: string) => r.startsWith('/historique') },
-  { path: '/saisie', label: 'Saisir', icon: PlusIcon, match: (r: string) => r.startsWith('/saisie'), primary: true },
+  { path: '/saisie', label: 'Saisir', icon: PlusIcon, match: (r: string) => r.startsWith('/saisie') || r.startsWith('/periode'), primary: true },
   { path: '/semaines', label: 'Heures', icon: ClockIcon, match: (r: string) => r.startsWith('/semaines') },
   {
     path: '/plus',
     label: 'Plus',
     icon: MoreIcon,
-    match: (r: string) => ['/plus', '/salaire', '/parametres', '/donnees', '/aide'].some((p) => r.startsWith(p)),
+    match: (r: string) => ['/plus', '/salaire', '/planning', '/parametres', '/donnees', '/aide'].some((p) => r.startsWith(p)),
   },
 ];
 

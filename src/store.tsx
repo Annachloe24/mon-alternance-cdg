@@ -10,6 +10,8 @@ interface Store {
   /** Message affiché si la lecture ou l'écriture locale a échoué. */
   storageError?: string;
   addEntry: (input: EntryInput) => DayEntry;
+  /** Ajoute plusieurs journées en une seule mise à jour (saisie d'une période). */
+  addEntries: (inputs: EntryInput[]) => void;
   updateEntry: (id: string, input: EntryInput) => void;
   deleteEntry: (id: string) => void;
   updateSettings: (settings: Settings) => void;
@@ -47,6 +49,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     return entry;
   }, []);
 
+  const addEntries = useCallback((inputs: EntryInput[]) => {
+    const now = new Date().toISOString();
+    const created = inputs.map((input) => ({ ...input, id: newId(), createdAt: now, updatedAt: now }));
+    setData((d) => ({ ...d, entries: [...d.entries, ...created] }));
+  }, []);
+
   const updateEntry = useCallback((id: string, input: EntryInput) => {
     const now = new Date().toISOString();
     setData((d) => ({
@@ -64,8 +72,8 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const resetAll = useCallback(() => setData(createDefaultData()), []);
 
   const value = useMemo(
-    () => ({ data, storageError, addEntry, updateEntry, deleteEntry, updateSettings, replaceAll, resetAll }),
-    [data, storageError, addEntry, updateEntry, deleteEntry, updateSettings, replaceAll, resetAll],
+    () => ({ data, storageError, addEntry, addEntries, updateEntry, deleteEntry, updateSettings, replaceAll, resetAll }),
+    [data, storageError, addEntry, addEntries, updateEntry, deleteEntry, updateSettings, replaceAll, resetAll],
   );
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
 }

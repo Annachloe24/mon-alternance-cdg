@@ -66,6 +66,12 @@ export const ShareIcon = () => (
     <path d="M12 3v12M8 7l4-4 4 4M5 12v8h14v-8" />
   </Icon>
 );
+export const CalendarIcon = () => (
+  <Icon>
+    <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+    <path d="M3.5 10h17M8 3v4M16 3v4" />
+  </Icon>
+);
 export const PlaneIcon = () => (
   <Icon>
     <path d="M10.5 3.5c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5V9l7.5 4.5V16l-7.5-2.3V18l2 1.5V22L12 21l-3.5 1v-2.5l2-1.5v-4.3L3 16v-2.5L10.5 9z" />

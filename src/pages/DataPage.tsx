@@ -4,6 +4,7 @@ import { Button, Card, LocalDataNotice, Notice, Page } from '../components/ui';
 import { parseBackup, serializeBackup } from '../lib/backup';
 import { entriesToCsv } from '../lib/csv';
 import { formatDateFr, todayIso } from '../lib/dates';
+import { clearDocuments } from '../lib/documents';
 import { offerFile } from '../lib/download';
 import { getLastBackup, setLastBackup } from '../lib/storage';
 import { useStore } from '../store';
@@ -51,7 +52,8 @@ export function DataPage() {
     if (!window.confirm('Effacer toutes les journées et paramètres de cet appareil ?')) return;
     if (!window.confirm('Dernière confirmation : cette action est irréversible sans sauvegarde. Continuer ?')) return;
     resetAll();
-    setMessage({ tone: 'info', text: 'Toutes les données ont été effacées.' });
+    void clearDocuments().catch(() => undefined);
+    setMessage({ tone: 'info', text: 'Toutes les données (journées, paramètres et plannings PDF) ont été effacées.' });
   }
 
   return (
@@ -61,8 +63,8 @@ export function DataPage() {
       <Card title="Sauvegarde">
         <p className="mb-3 text-sm text-slate-600">
           {lastBackup ? `Dernière sauvegarde : ${formatDateFr(lastBackup.slice(0, 10))}.` : 'Aucune sauvegarde exportée depuis cet appareil.'} La
-          sauvegarde contient toutes les journées et tous les paramètres. Elle permet de restaurer les données sur un nouvel
-          appareil ou après une suppression de l'application.
+          sauvegarde contient toutes les journées et tous les paramètres (pas les plannings PDF : gardez l'original reçu de
+          l'école). Elle permet de restaurer les données sur un nouvel appareil ou après une suppression de l'application.
         </p>
         <div className="space-y-2">
           <Button className="w-full" onClick={exportBackup}>

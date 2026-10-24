@@ -2,8 +2,8 @@
  * Propose un fichier à l'utilisateur. Sur iPhone, la feuille de partage permet « Enregistrer dans Fichiers »,
  * AirDrop ou l'envoi par e-mail ; sinon on revient au téléchargement classique.
  */
-export async function offerFile(content: string, filename: string, mime: string): Promise<'shared' | 'downloaded' | 'cancelled'> {
-  const blob = new Blob([content], { type: mime });
+export async function offerFile(content: string | Blob, filename: string, mime: string): Promise<'shared' | 'downloaded' | 'cancelled'> {
+  const blob = content instanceof Blob ? content : new Blob([content], { type: mime });
   try {
     const file = new File([blob], filename, { type: mime });
     const touchDevice = navigator.maxTouchPoints > 0;

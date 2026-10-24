@@ -70,6 +70,8 @@ export function Help() {
           <li>Temps de travail d'une journée = somme des plages horaires − pauses.</li>
           <li>Une plage dont l'heure de fin est plus tôt que l'heure de début passe minuit ; elle reste comptée sur la date de début.</li>
           <li>Une seule fiche par date : pour une journée coupée, ajoutez plusieurs plages dans la même fiche.</li>
+          <li>« Plusieurs jours » crée la même journée sur une période ; les dates déjà saisies sont ignorées, jamais écrasées.</li>
+          <li>Le planning PDF de l'école est seulement affiché : l'application ne lit pas son contenu.</li>
           <li>Le compteur de formation pratique compte les journées « Entreprise » avec des heures saisies.</li>
           <li>Les semaines vont du lundi au dimanche (numérotation ISO).</li>
           <li>Heures supplémentaires et salaire sont des estimations, à vérifier avec l'employeur et la fiche de paie.</li>

@@ -5,6 +5,8 @@ Application web installable (PWA), en français, pour suivre un contrat en alter
 
 - Tableau de bord : progression du contrat, compteur des **45 journées de formation pratique en entreprise**, heures de la semaine, salaire estimé du mois.
 - Saisie des journées **Entreprise** et **CFA** (séparées), avec plusieurs plages horaires, pauses et passages après minuit.
+- **Saisie de plusieurs jours d'un coup** (ex. une semaine de CFA) : aperçu avant création, dates déjà saisies ignorées sans être écrasées.
+- **Planning PDF de l'école** joint dans l'app (IndexedDB, hors ligne, sur l'appareil uniquement) ; il est affiché, pas lu automatiquement.
 - Récapitulatif hebdomadaire, **heures supplémentaires estimées** (paramètres modifiables, avertissement tant que les règles ne sont pas confirmées).
 - **Salaire brut estimé** par mois, avec taux horaires et dates d'effet modifiables.
 - Historique avec modification et suppression.
